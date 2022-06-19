@@ -1,12 +1,13 @@
 <template>
   <ul id="todoList">
     <TodoItem
-      v-for="(todo, index) of todos"
+      v-for="(todo, index) of todos_temp"
       v-bind:key="index"
       v-bind:itemRemove="itemRemove"
       v-bind:itemEdit="itemEdit"
       v-bind:todo_prop="todo"
       v-bind:index="index"
+      v-bind:getTodos="getTodos"
     />
   </ul>
 </template>
@@ -15,7 +16,12 @@
 import TodoItem from './TodoItem.vue'
 
 export default {
-  props: ['todos', 'itemRemove', 'itemEdit'],
+  props: ['todos_temp', 'itemRemove', 'itemEdit'],
+  methods: {
+    getTodos () {
+      console.log('todos_temp', this.todos_temp)
+    }
+  },
   components: {
     TodoItem
   }
